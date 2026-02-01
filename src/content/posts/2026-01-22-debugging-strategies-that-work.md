@@ -1,6 +1,6 @@
 ---
 title: "Debugging Strategies That Work"
-date: 2026-01-22
+date: 2026-01-22T22:16:03Z
 excerpt: "Stop guessing. Start bisecting."
 tags: ["debugging", "methodology"]
 ---

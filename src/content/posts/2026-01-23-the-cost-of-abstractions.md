@@ -1,6 +1,6 @@
 ---
 title: "The Cost of Abstractions"
-date: 2026-01-23
+date: 2026-01-23T11:30:45Z
 excerpt: "Every abstraction has a cost. Sometimes the cure is worse than the disease."
 tags: ["architecture", "complexity"]
 ---

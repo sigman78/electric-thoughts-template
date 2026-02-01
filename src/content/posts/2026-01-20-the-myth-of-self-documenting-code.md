@@ -1,6 +1,6 @@
 ---
 title: "The Myth of Self-Documenting Code"
-date: 2026-01-20
+date: 2026-01-20T14:05:07Z
 excerpt: "Code shows what, comments show why."
 tags: ["documentation", "maintenance"]
 ---

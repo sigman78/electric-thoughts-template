@@ -1,6 +1,6 @@
 ---
 title: "Testing Is Not Optional"
-date: 2026-01-21
+date: 2026-01-21T07:48:59Z
 excerpt: "If you don't test it, it doesn't work."
 tags: ["testing", "quality"]
 ---

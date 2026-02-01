@@ -1,6 +1,6 @@
 ---
 title: "TypeScript Tips for Better Code"
-date: 2026-01-30
+date: 2026-01-30T13:44:00Z
 excerpt: "TypeScript's power lies in its type system. Use it to catch bugs before they reach production."
 tags: ["typescript", "javascript"]
 ---

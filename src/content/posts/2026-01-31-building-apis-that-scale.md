@@ -1,6 +1,6 @@
 ---
 title: "Building APIs That Scale"
-date: 2026-01-31
+date: 2026-01-31T20:20:20Z
 excerpt: "The key to scalable APIs isn't fancy frameworks—it's understanding your bottlenecks."
 tags: ["api", "nodejs", "backend"]
 ---
