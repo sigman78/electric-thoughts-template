@@ -1,5 +1,6 @@
 ---
-const today = new Date().toISOString().split('T')[0];
+const todayTs = new Date();
+const todayDate = todayTs.toISOString().split('T')[0];
 ---
 
 <header class="site-header">
@@ -9,7 +10,7 @@ const today = new Date().toISOString().split('T')[0];
       <span class="logo-text">Electric Thoughts</span>
     </a>
     <nav class="nav">
-      <span class="date">{today}</span>
+      <time class="date" datetime={todayTs.toISOString()}>{todayDate}</time>
     </nav>
   </div>
 </header>

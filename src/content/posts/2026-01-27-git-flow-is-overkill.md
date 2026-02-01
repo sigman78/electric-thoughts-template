@@ -1,6 +1,6 @@
 ---
 title: "Git Flow Is Overkill"
-date: 2026-01-27
+date: 2026-01-27T10:02:21Z
 excerpt: "Most teams don't need complex branching strategies. GitHub Flow is enough."
 tags: ["git", "workflow"]
 ---

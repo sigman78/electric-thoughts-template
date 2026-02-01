@@ -1,6 +1,6 @@
 ---
 title: "Docker Images Done Right"
-date: 2026-01-29
+date: 2026-01-29T03:07:49Z
 excerpt: "Multi-stage builds are the single best way to reduce image size and attack surface."
 tags: ["docker", "devops"]
 ---

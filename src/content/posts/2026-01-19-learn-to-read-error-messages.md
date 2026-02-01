@@ -1,6 +1,6 @@
 ---
 title: "Learn to Read Error Messages"
-date: 2026-01-19
+date: 2026-01-19T09:12:34Z
 excerpt: "Stack traces are gifts. Read them."
 tags: ["debugging", "learning"]
 ---

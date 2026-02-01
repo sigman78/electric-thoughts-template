@@ -1,6 +1,6 @@
 ---
 title: "Rust or Go: Just Pick One"
-date: 2026-01-28
+date: 2026-01-28T18:55:12Z
 excerpt: "Stop debating and start shipping. Both languages are fast, safe, and production-ready."
 tags: ["rust", "go", "backend"]
 ---
