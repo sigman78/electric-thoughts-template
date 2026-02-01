@@ -1,0 +1,108 @@
+---
+import { format } from '../utils/date';
+
+interface Props {
+  title: string;
+  date: Date;
+  slug: string;
+  content: string;
+  isTruncated?: boolean;
+}
+
+const { title, date, slug, content, isTruncated = false } = Astro.props;
+const formattedDate = format(date);
+---
+
+<article class="post-card">
+  <time class="post-date">{formattedDate}</time>
+  <h2 class="post-title">
+    <a href={`/post/${slug}`}>{title}</a>
+  </h2>
+  <div class="post-content" set:html={content} />
+  {isTruncated && (
+    <a href={`/post/${slug}`} class="read-more" title="Read full post">
+      <span class="read-more-icon">→</span>
+    </a>
+  )}
+</article>
+
+<style>
+  .post-card {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .post-card:last-child {
+    border-bottom: none;
+  }
+  
+  .post-date {
+    display: block;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .post-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .post-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .post-title a:hover {
+    color: var(--accent);
+  }
+  
+  .post-content {
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  .post-content :global(p) {
+    margin-bottom: 0.75rem;
+  }
+  
+  .post-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.75rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  
+  .read-more:hover {
+    text-decoration: none;
+  }
+  
+  .read-more-icon {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .read-more:hover .read-more-icon {
+    transform: translateX(4px);
+  }
+  
+  @media (max-width: 480px) {
+    .post-card {
+      padding: 1.25rem 0;
+    }
+    
+    .post-title {
+      font-size: 1.2rem;
+    }
+  }
+</style>

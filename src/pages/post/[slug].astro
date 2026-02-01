@@ -1,0 +1,222 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import { format } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const formattedDate = format(post.data.date);
+---
+
+<Layout title={`${post.data.title} - Electric Thoughts`} description={post.data.excerpt}>
+  <Header />
+  
+  <main class="container">
+    <article class="post">
+      <header class="post-header">
+        <div class="post-meta">
+          <time class="post-date">{formattedDate}</time>
+          {post.data.tags && (
+            <div class="tags">
+              {post.data.tags.map((tag) => (
+                <span class="tag">#{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        <h1 class="post-title">{post.data.title}</h1>
+      </header>
+      
+      <div class="post-content">
+        <Content />
+      </div>
+    </article>
+    
+    <nav class="post-nav">
+      <a href="/" class="back-link">← Back to all posts</a>
+    </nav>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>Electric Thoughts © {new Date().getFullYear()}</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .post {
+    padding: 2rem 0;
+  }
+  
+  .post-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .post-date {
+    color: var(--accent-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  
+  .post-excerpt {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .tag {
+    color: var(--text-tertiary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+  }
+  
+  .post-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  
+  .post-content :global(p) {
+    margin-bottom: 1.25rem;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
+  
+  .post-content :global(h2) {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  
+  .post-content :global(h3) {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+  
+  .post-content :global(ul), 
+  .post-content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+  
+  .post-content :global(li) {
+    margin-bottom: 0.5rem;
+    color: var(--text-tertiary);
+  }
+  
+  .post-content :global(li)::marker {
+    color: var(--accent-dim);
+  }
+  
+  .post-content :global(strong) {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .post-content :global(em) {
+    color: var(--text-tertiary);
+  }
+  
+  .post-content :global(code) {
+    font-size: 0.9em;
+    color: var(--accent);
+  }
+  
+  .post-nav {
+    padding: 2rem 0 3rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .back-link {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border-bottom: none;
+  }
+  
+  .back-link:hover {
+    color: var(--accent);
+  }
+  
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+  }
+  
+  .site-footer p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 300;
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .post {
+      padding: 1.5rem 0;
+    }
+    
+    .post-title {
+      font-size: 1.6rem;
+    }
+    
+    .post-content :global(h2) {
+      font-size: 1.3rem;
+    }
+    
+    .post-content :global(h3) {
+      font-size: 1.1rem;
+    }
+  }
+</style>

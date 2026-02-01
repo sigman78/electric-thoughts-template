@@ -1,0 +1,84 @@
+---
+const today = new Date().toISOString().split('T')[0];
+---
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">Electric Thoughts</span>
+    </a>
+    <nav class="nav">
+      <span class="date">{today}</span>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  
+  .logo:hover {
+    text-decoration: none;
+  }
+  
+  .logo-icon {
+    font-size: 1.3rem;
+    filter: drop-shadow(0 0 8px var(--accent));
+  }
+  
+  .logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.5px;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .date {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 0.75rem 1rem;
+    }
+    
+    .logo-text {
+      font-size: 1rem;
+    }
+    
+    .date {
+      display: none;
+    }
+  }
+</style>
