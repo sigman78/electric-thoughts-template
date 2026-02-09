@@ -205,7 +205,11 @@ const postsWithContent = await Promise.all(
   }
   
   .post-content :global(em) {
-    color: var(--text-tertiary);
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-muted);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
   }
   
   .post-content :global(code) {
@@ -223,8 +227,6 @@ const postsWithContent = await Promise.all(
     justify-content: center;
     gap: 0.5rem;
     margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
   }
   
   .pagination a, .pagination span {
@@ -299,17 +301,17 @@ const postsWithContent = await Promise.all(
     .container {
       padding: 0 1rem;
     }
-    
+
     .post-card {
       padding: 1.25rem 0;
     }
-    
+
     .post-title {
-      font-size: 1.1rem;
+      font-size: 1.5rem;
     }
-    
+
     .post-content {
-      font-size: 0.9rem;
+      font-size: 1.0rem;
       line-height: 1.5;
     }
     

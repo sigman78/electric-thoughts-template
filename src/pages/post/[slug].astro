@@ -43,7 +43,7 @@ const formattedDate = format(post.data.date);
     </article>
     
     <nav class="post-nav">
-      <a href="/" class="back-link">← Back to all posts</a>
+      <a href="/" class="back-link">Return ↵</a>
     </nav>
   </main>
   
@@ -62,7 +62,7 @@ const formattedDate = format(post.data.date);
   }
   
   .post {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
   }
   
   .post-header {
@@ -161,7 +161,11 @@ const formattedDate = format(post.data.date);
   }
   
   .post-content :global(em) {
-    color: var(--text-tertiary);
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-muted);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
   }
   
   .post-content :global(code) {
@@ -170,19 +174,20 @@ const formattedDate = format(post.data.date);
   }
   
   .post-nav {
-    padding: 2rem 0 3rem;
-    border-top: 1px solid var(--border);
+    padding: 0.25rem 0 1rem;
   }
-  
+
   .back-link {
-    color: var(--text-tertiary);
-    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
     transition: all 0.2s ease;
     border-bottom: none;
   }
-  
+
   .back-link:hover {
     color: var(--accent);
+    text-shadow: 0 0 15px var(--accent-glow);
   }
   
   .site-footer {
