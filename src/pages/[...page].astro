@@ -65,7 +65,7 @@ const postsWithContent = await Promise.all(
     <section class="posts">
       <div class="posts-list">
         {postsWithContent.map((post, index) => (
-          <article class="post-card">
+          <article class={`post-card ${index === 0 && page.currentPage === 1 ? 'first-post' : ''}`}>
             <div class="post-header-row">
               <h2 class="post-title">
                 <a href={`/post/${post.slug}`}>{post.data.title}</a>
@@ -205,14 +205,35 @@ const postsWithContent = await Promise.all(
   }
   
   .post-content :global(em) {
-    color: var(--text-tertiary);
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-muted);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
   }
   
   .post-content :global(code) {
     font-size: 0.85em;
     color: var(--accent);
   }
-  
+
+  .first-post .post-content :global(p:last-child)::after {
+    content: '_';
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
   .post-divider {
     margin: 2rem 0 0;
     opacity: 0.8;
@@ -223,8 +244,6 @@ const postsWithContent = await Promise.all(
     justify-content: center;
     gap: 0.5rem;
     margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
   }
   
   .pagination a, .pagination span {
@@ -299,17 +318,17 @@ const postsWithContent = await Promise.all(
     .container {
       padding: 0 1rem;
     }
-    
+
     .post-card {
       padding: 1.25rem 0;
     }
-    
+
     .post-title {
-      font-size: 1.1rem;
+      font-size: 1.5rem;
     }
-    
+
     .post-content {
-      font-size: 0.9rem;
+      font-size: 1.0rem;
       line-height: 1.5;
     }
     
