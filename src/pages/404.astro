@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+---
+
+<Layout title="404 - Electric Thoughts" description="Page not found">
+  <Header />
+  
+  <main class="error-container">
+    <div class="error-content">
+      <div class="glitch-wrapper">
+        <h1 class="error-code glitch-text glitch-text-continuous" data-content="404">404</h1>
+      </div>
+      <p class="error-message">Signal lost. The page you're looking for doesn't exist.</p>
+      <div class="error-actions">
+        <a href="/" class="return-link">
+          <span class="return-icon">↵</span>
+          Return to base
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>Electric Thoughts © {new Date().getFullYear()}</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+    padding: 2rem 1.5rem;
+  }
+  
+  .error-content {
+    text-align: center;
+  }
+  
+  .glitch-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .error-message {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 1.5rem 0 2rem;
+    font-weight: 300;
+  }
+  
+  .error-actions {
+    margin-top: 2rem;
+  }
+  
+  .return-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--accent-dim);
+    border-radius: 6px;
+    background: transparent;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  
+  .return-link:hover {
+    background: var(--accent-dim);
+    color: var(--text-primary);
+    text-shadow: 0 0 15px var(--accent-glow);
+    border-color: var(--accent);
+  }
+  
+  .return-icon {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .return-link:hover .return-icon {
+    transform: translateX(-4px);
+  }
+  
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+  }
+  
+  .site-footer .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .site-footer p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 300;
+  }
+  
+  @media (max-width: 600px) {
+    .error-code {
+      font-size: 5rem;
+    }
+    
+    .error-message {
+      font-size: 1rem;
+    }
+    
+    .return-link {
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .error-container {
+      padding: 2rem 1rem;
+    }
+    
+    .error-code {
+      font-size: 4rem;
+    }
+    
+    .error-message {
+      font-size: 0.95rem;
+    }
+  }
+</style>
