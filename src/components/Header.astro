@@ -5,9 +5,8 @@ const todayDate = todayTs.toISOString().split('T')[0];
 
 <header class="site-header">
   <div class="container">
-    <a href="/" class="logo">
-      <span class="logo-icon">⚡</span>
-      <span class="logo-text">Electric Thoughts</span>
+    <a href="/" class="logo glitch-text-trigger">
+      <span class="logo-content glitch-text" data-content="⚡ Electric Thoughts">⚡ Electric Thoughts</span>
     </a>
     <nav class="nav">
       <time class="date" datetime={todayTs.toISOString()}>{todayDate}</time>

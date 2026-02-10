@@ -1,0 +1,78 @@
+/* Glitch Effect Styles - Shared across the site */
+
+/* Base glitch container */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: #00ffff;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.glitch-text::after {
+  color: #ff00ff;
+  z-index: -2;
+  opacity: 0.8;
+}
+
+/* Hover-triggered glitch animation */
+.glitch-text:hover::before,
+.glitch-text-trigger:hover .glitch-text::before {
+  animation: glitchy 0.3s ease 0.3s infinite;
+}
+
+.glitch-text:hover::after,
+.glitch-text-trigger:hover .glitch-text::after {
+  animation: glitchy 0.3s ease infinite reverse;
+}
+
+/* Continuous glitch animation (for 404 page) */
+.glitch-text-continuous::before {
+  animation: glitchy-cyan 0.3s ease infinite;
+}
+
+.glitch-text-continuous::after {
+  animation: glitchy-magenta 0.3s ease infinite;
+}
+
+/* Keyframe animations */
+@keyframes glitchy {
+  0%   { transform: translate(-2px, 2px); }
+  25%  { transform: translate(-2px, -2px); }
+  50%  { transform: translate(2px, 2px); }
+  75%  { transform: translate(2px, -2px); }
+  100% { transform: translate(-2px, 2px); }
+}
+
+@keyframes glitchy-cyan {
+  0%   { transform: translate(-3px, 3px); clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); }
+  20%  { transform: translate(3px, -3px); clip-path: polygon(0 25%, 100% 25%, 100% 50%, 0 50%); }
+  40%  { transform: translate(-3px, 3px); clip-path: polygon(0 45%, 100% 45%, 100% 70%, 0 70%); }
+  60%  { transform: translate(3px, -3px); clip-path: polygon(0 65%, 100% 65%, 100% 90%, 0 90%); }
+  80%  { transform: translate(-2px, 2px); clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); }
+  100% { transform: translate(-3px, 3px); clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); }
+}
+
+@keyframes glitchy-magenta {
+  0%   { transform: translate(3px, -3px); clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%); }
+  20%  { transform: translate(-3px, 3px); clip-path: polygon(0 35%, 100% 35%, 100% 60%, 0 60%); }
+  40%  { transform: translate(3px, -3px); clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%); }
+  60%  { transform: translate(-3px, 3px); clip-path: polygon(0 75%, 100% 75%, 100% 95%, 0 95%); }
+  80%  { transform: translate(2px, -2px); clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%); }
+  100% { transform: translate(3px, -3px); clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%); }
+}
