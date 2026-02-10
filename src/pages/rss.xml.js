@@ -19,7 +19,7 @@ export async function GET(context) {
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.excerpt || '',
-      link: `/post/${post.slug}/`,
+      link: `/post/${post.slug}.html`,
       content: sanitizeHtml(parser.render(post.body)),
     })),
     customData: `<language>en</language>`,
