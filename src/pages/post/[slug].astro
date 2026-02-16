@@ -6,7 +6,7 @@ import { format } from '../../utils/date';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  
+
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -20,7 +20,7 @@ const formattedDate = format(post.data.date);
 
 <Layout title={`${post.data.title} - Electric Thoughts`} description={post.data.excerpt}>
   <Header />
-  
+
   <main class="container">
     <article class="post">
       <header class="post-header">
@@ -36,17 +36,17 @@ const formattedDate = format(post.data.date);
         </div>
         <h1 class="post-title">{post.data.title}</h1>
       </header>
-      
+
       <div class="post-content">
         <Content />
       </div>
     </article>
-    
+
     <nav class="post-nav">
       <a href="/" class="back-link">Return ↵</a>
     </nav>
   </main>
-  
+
   <footer class="site-footer">
     <div class="container">
       <p>Electric Thoughts © {new Date().getFullYear()}</p>
@@ -60,15 +60,15 @@ const formattedDate = format(post.data.date);
     margin: 0 auto;
     padding: 0 1.5rem;
   }
-  
+
   .post {
     padding: 1.5rem 0;
   }
-  
+
   .post-header {
     margin-bottom: 1.5rem;
   }
-  
+
   .post-meta {
     display: flex;
     align-items: center;
@@ -76,14 +76,14 @@ const formattedDate = format(post.data.date);
     margin-bottom: 1rem;
     flex-wrap: wrap;
   }
-  
+
   .post-date {
     color: var(--accent-dim);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--code-font);
     font-size: 0.8rem;
     opacity: 0.8;
   }
-  
+
   .post-title {
     font-size: 2rem;
     font-weight: 700;
@@ -99,32 +99,32 @@ const formattedDate = format(post.data.date);
     margin-bottom: 0;
     font-weight: 300;
   }
-  
+
   .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
   }
-  
+
   .tag {
     color: var(--text-tertiary);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--code-font);
     font-size: 0.75rem;
   }
-  
+
   .post-content {
     font-size: 1rem;
     line-height: 1.5;
     color: var(--text-secondary);
   }
-  
+
   .post-content :global(p) {
     margin-bottom: 1.25rem;
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
   }
-  
+
   .post-content :global(h2) {
     font-size: 1.5rem;
     margin-top: 2.5rem;
@@ -132,34 +132,34 @@ const formattedDate = format(post.data.date);
     color: var(--text-primary);
     letter-spacing: -0.01em;
   }
-  
+
   .post-content :global(h3) {
     font-size: 1.2rem;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
   }
-  
-  .post-content :global(ul), 
+
+  .post-content :global(ul),
   .post-content :global(ol) {
     margin-bottom: 1.25rem;
     padding-left: 1.5rem;
   }
-  
+
   .post-content :global(li) {
     margin-bottom: 0.5rem;
     color: var(--text-tertiary);
   }
-  
+
   .post-content :global(li)::marker {
     color: var(--accent-dim);
   }
-  
+
   .post-content :global(strong) {
     color: var(--text-primary);
     font-weight: 500;
   }
-  
+
   .post-content :global(em) {
     color: var(--text-primary);
     text-decoration: underline;
@@ -167,12 +167,12 @@ const formattedDate = format(post.data.date);
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
   }
-  
+
   .post-content :global(code) {
     font-size: 0.9em;
     color: var(--accent);
   }
-  
+
   .post-nav {
     padding: 0.25rem 0 1rem;
   }
@@ -189,12 +189,12 @@ const formattedDate = format(post.data.date);
     color: var(--accent);
     text-shadow: 0 0 15px var(--accent-glow);
   }
-  
+
   .site-footer {
     border-top: 1px solid var(--border);
     padding: 2rem 0;
   }
-  
+
   .site-footer p {
     color: var(--text-muted);
     font-size: 0.8rem;
@@ -202,24 +202,24 @@ const formattedDate = format(post.data.date);
     margin: 0;
     font-weight: 300;
   }
-  
+
   @media (max-width: 480px) {
     .container {
       padding: 0 1rem;
     }
-    
+
     .post {
       padding: 1.5rem 0;
     }
-    
+
     .post-title {
       font-size: 1.6rem;
     }
-    
+
     .post-content :global(h2) {
       font-size: 1.3rem;
     }
-    
+
     .post-content :global(h3) {
       font-size: 1.1rem;
     }
