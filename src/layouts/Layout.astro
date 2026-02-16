@@ -23,26 +23,28 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style is:global>
     :root {
-      --bg-primary: #080808;
-      --bg-secondary: #0d0d0d;
-      --bg-tertiary: #121212;
-      --text-primary: #f0f0f0;
-      --text-secondary: #b0b0b0;
-      --text-tertiary: #808080;
-      --text-muted: #505050;
-      --accent: #00d4ff;
-      --accent-dim: #00a3cc;
-      --accent-glow: rgba(0, 212, 255, 0.4);
-      --border: #1a1a1a;
-      --border-subtle: #111111;
+      color-scheme: only dark;
+
+      --bg-primary: oklch(8.5% 0 0);
+      --bg-secondary: oklch(12% 0 0);
+      --bg-tertiary: oklch(16% 0 0);
+      --text-primary: oklch(95% 0 0);
+      --text-secondary: oklch(73% 0 0);
+      --text-tertiary: oklch(59% 0 0);
+      --text-muted: oklch(40% 0 0);
+      --accent: oklch(79% 0.35 200deg);
+      --accent-dim: oklch(63% 0.25 200deg);
+      --accent-glow: oklch(79% 0.65 200deg / 0.4);
+      --border: oklch(18% 0 0);
+      --border-subtle: oklch(15% 0 0);
     }
-    
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     html {
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
@@ -50,36 +52,35 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       text-rendering: optimizeLegibility;
       scrollbar-gutter: stable;
     }
-    
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: Roboto, 'Segoe UI', BlinkMacSystemFont, -apple-system, sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.5;
       min-height: 100vh;
       font-weight: 400;
-      letter-spacing: -0.01em;
-      background-image: 
-        radial-gradient(ellipse at top, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom, rgba(0, 212, 255, 0.02) 0%, transparent 40%);
+      background-image:
+        radial-gradient(ellipse at top, oklch(79% 0.17 200deg / 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom, oklch(79% 0.17 200deg / 0.06) 0%, transparent 40%);
     }
-    
+
     code, pre {
       font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
       font-feature-settings: "liga" 1;
     }
-    
+
     a {
       color: var(--accent);
       text-decoration: none;
       transition: all 0.2s ease;
     }
-    
+
     a:hover {
-      color: #fff;
+      color: oklch(90% 0, 0deg);
       text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent-glow);
     }
-    
+
     /* Enhanced Typography */
     h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
@@ -88,39 +89,39 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       color: var(--text-primary);
       letter-spacing: -0.02em;
     }
-    
+
     h1 { font-size: 2.2rem; font-weight: 700; }
     h2 { font-size: 1.6rem; }
     h3 { font-size: 1.3rem; }
     h4 { font-size: 1.1rem; }
-    
+
     p {
       margin-bottom: 1rem;
       text-align: justify;
-      text-justify: inter-word;
+      text-justify: auto;
       hyphens: auto;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+      text-wrap: pretty;
+      overflow-wrap: normal;
     }
-    
+
     /* Modern text wrapping */
     article, section {
       text-wrap: pretty;
       word-break: normal;
       line-break: auto;
     }
-    
+
     /* Subtle color variations for text */
     strong, b {
       color: #ffffff;
       font-weight: 600;
     }
-    
+
     em, i {
       color: var(--text-tertiary);
       font-style: italic;
     }
-    
+
     /* HR with blueish glow underneath */
     hr {
       border: none;
@@ -137,26 +138,7 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       position: relative;
       overflow: visible;
     }
-    
-    hr::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
-      height: 15px;
-      margin-top: 2px;
-      background: radial-gradient(
-        ellipse at center top,
-        var(--accent-glow) 0%,
-        rgba(0, 212, 255, 0.15) 40%,
-        transparent 80%
-      );
-      filter: blur(6px);
-      pointer-events: none;
-    }
-    
+
     hr::before {
       content: '';
       position: absolute;
@@ -174,22 +156,22 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       filter: blur(12px);
       pointer-events: none;
     }
-    
+
     /* Lists with accent colors */
     ul, ol {
       margin-bottom: 1rem;
       padding-left: 1.5rem;
     }
-    
+
     li {
       margin-bottom: 0.5rem;
       color: var(--text-secondary);
     }
-    
+
     li::marker {
       color: var(--accent);
     }
-    
+
     /* Blockquotes */
     blockquote {
       border-left: 3px solid var(--accent);
@@ -202,7 +184,7 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       padding: 1rem 1rem 1rem 1.5rem;
       border-radius: 0 8px 8px 0;
     }
-    
+
     blockquote::before {
       content: '"';
       position: absolute;
@@ -214,7 +196,7 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       font-family: Georgia, serif;
       line-height: 1;
     }
-    
+
     pre {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
@@ -223,11 +205,11 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       overflow-x: auto;
       margin: 1.5rem 0;
       position: relative;
-      box-shadow: 
+      box-shadow:
         0 0 20px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(0, 212, 255, 0.1);
     }
-    
+
     pre code {
       background: transparent;
       padding: 0;
@@ -235,7 +217,7 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       font-size: 0.9rem;
       line-height: 1.25;
     }
-    
+
     code {
       background: var(--bg-tertiary);
       padding: 0.2em 0.4em;
@@ -243,36 +225,36 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
       font-size: 0.9em;
       color: var(--accent);
     }
-    
+
     /* Links in content */
     article a {
       border-bottom: 1px solid var(--accent-dim);
       padding-bottom: 0.05em;
     }
-    
+
     article a:hover {
       border-bottom-color: var(--accent);
     }
-    
+
     /* Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
     }
-    
+
     ::-webkit-scrollbar-track {
       background: var(--bg-primary);
     }
-    
+
     ::-webkit-scrollbar-thumb {
       background: var(--border);
       border-radius: 4px;
     }
-    
+
     ::-webkit-scrollbar-thumb:hover {
       background: var(--accent-dim);
     }
-    
+
     /* Selection */
     ::selection {
       background: rgba(0, 212, 255, 0.3);
