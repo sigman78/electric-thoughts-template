@@ -5,12 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview:astro": "astro preview",
-    "preview": "wrangler pages dev ./dist",
+    "preview": "astro preview",
+    "preview:host": "astro preview --host",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.5",
     "@astrojs/rss": "^4.0.15",
     "astro": "^5.17.1",
     "markdown-it": "^14.1.0",
