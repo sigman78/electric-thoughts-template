@@ -23,18 +23,20 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style is:global>
     :root {
-      --bg-primary: #080808;
-      --bg-secondary: #0d0d0d;
-      --bg-tertiary: #121212;
-      --text-primary: #f0f0f0;
-      --text-secondary: #b0b0b0;
-      --text-tertiary: #808080;
-      --text-muted: #505050;
-      --accent: #00d4ff;
-      --accent-dim: #00a3cc;
-      --accent-glow: rgba(0, 212, 255, 0.4);
-      --border: #1a1a1a;
-      --border-subtle: #111111;
+      color-scheme: only dark;
+
+      --bg-primary: oklch(8.5% 0 0);
+      --bg-secondary: oklch(12% 0 0);
+      --bg-tertiary: oklch(16% 0 0);
+      --text-primary: oklch(95% 0 0);
+      --text-secondary: oklch(73% 0 0);
+      --text-tertiary: oklch(59% 0 0);
+      --text-muted: oklch(40% 0 0);
+      --accent: oklch(79% 0.35 200deg);
+      --accent-dim: oklch(63% 0.25 200deg);
+      --accent-glow: oklch(79% 0.65 200deg / 0.4);
+      --border: oklch(18% 0 0);
+      --border-subtle: oklch(15% 0 0);
     }
     
     *, *::before, *::after {
