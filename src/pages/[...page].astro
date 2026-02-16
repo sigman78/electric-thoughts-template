@@ -215,7 +215,7 @@ const postsWithContent = await Promise.all(
     color: var(--accent);
   }
 
-  .first-post .post-content :global(p:last-child)::after {
+  .first-post .post-content :global(> p:last-child)::after {
     content: '_';
     font-family: 'JetBrains Mono', monospace;
     color: var(--accent);
