@@ -7,10 +7,10 @@ import { format } from '../utils/date';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  const sortedPosts = posts.sort((a, b) => 
+  const sortedPosts = posts.sort((a, b) =>
     b.data.date.valueOf() - a.data.date.valueOf()
   );
-  
+
   return paginate(sortedPosts, { pageSize: 4 });
 };
 
@@ -22,24 +22,24 @@ const { page } = Astro.props;
 
 function getPageNumbers(current: number, total: number): (number | string)[] {
   const pages: (number | string)[] = [];
-  
+
   if (total <= 7) {
     for (let i = 1; i <= total; i++) pages.push(i);
   } else {
     pages.push(1);
-    
+
     if (current > 3) pages.push('...');
-    
+
     const start = Math.max(2, current - 1);
     const end = Math.min(total - 1, current + 1);
-    
+
     for (let i = start; i <= end; i++) pages.push(i);
-    
+
     if (current < total - 2) pages.push('...');
-    
+
     pages.push(total);
   }
-  
+
   return pages;
 }
 
@@ -58,10 +58,10 @@ const postsWithContent = await Promise.all(
 
 <Layout title={page.currentPage === 1 ? "Electric Thoughts - Tech Blog" : `Page ${page.currentPage} - Electric Thoughts`}>
   <Header />
-  
+
   <main class="container">
     <h1 class="visually-hidden">Electric Thoughts{page.currentPage > 1 && ` - Page ${page.currentPage}`}</h1>
-    
+
     <section class="posts">
       <div class="posts-list">
         {postsWithContent.map((post, index) => (
@@ -79,7 +79,7 @@ const postsWithContent = await Promise.all(
           </article>
         ))}
       </div>
-      
+
       {page.lastPage > 1 && (
         <nav class="pagination" aria-label="Pagination">
           {pages.map((p) => (
@@ -95,7 +95,7 @@ const postsWithContent = await Promise.all(
       )}
     </section>
   </main>
-  
+
   <footer class="site-footer">
     <div class="container">
       <p>Chronicles from the terminal. Short thoughts on code, systems, and engineering.</p>
@@ -109,7 +109,7 @@ const postsWithContent = await Promise.all(
     margin: 0 auto;
     padding: 0 1.5rem;
   }
-  
+
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -121,25 +121,23 @@ const postsWithContent = await Promise.all(
     white-space: nowrap;
     border: 0;
   }
-  
+
   .posts {
     padding: 0 0 3rem;
   }
-  
+
   .post-card {
     padding: 1.5rem 0;
   }
-  
+
   .post-header-row {
     display: flex;
     align-items: baseline;
     gap: 1rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .post-title {
-    font-size: 1.25rem;
-    font-weight: 600;
     line-height: 1.3;
     margin: 0;
     letter-spacing: -0.01em;
@@ -160,48 +158,48 @@ const postsWithContent = await Promise.all(
 
   .post-date {
     color: var(--accent-dim);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--code-font);
     font-size: 0.75rem;
     white-space: nowrap;
     opacity: 0.8;
     margin-left: auto;
     text-align: right;
   }
-  
+
   .post-content {
     color: var(--text-secondary);
     line-height: 1.5;
   }
-  
+
   .post-content :global(p) {
     margin-bottom: 0.75rem;
     text-align: justify;
   }
-  
+
   .post-content :global(p:last-child) {
     margin-bottom: 0;
   }
-  
+
   .post-content :global(ul),
   .post-content :global(ol) {
     margin-bottom: 0.75rem;
     padding-left: 1.25rem;
   }
-  
+
   .post-content :global(li) {
     margin-bottom: 0.35rem;
     color: var(--text-tertiary);
   }
-  
+
   .post-content :global(li)::marker {
     color: var(--accent-dim);
   }
-  
+
   .post-content :global(strong) {
     color: var(--text-primary);
     font-weight: 500;
   }
-  
+
   .post-content :global(em) {
     color: var(--text-primary);
     text-decoration: underline;
@@ -209,7 +207,7 @@ const postsWithContent = await Promise.all(
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
   }
-  
+
   .post-content :global(code) {
     font-size: 0.85em;
     color: var(--accent);
@@ -217,7 +215,7 @@ const postsWithContent = await Promise.all(
 
   .first-post .post-content :global(> p:last-child)::after {
     content: '_';
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--code-font);
     color: var(--accent);
     animation: blink 1s step-end infinite;
     margin-left: 2px;
@@ -236,14 +234,14 @@ const postsWithContent = await Promise.all(
     margin: 2rem 0 0;
     opacity: 0.8;
   }
-  
+
   .pagination {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 3rem;
   }
-  
+
   .pagination a, .pagination span {
     display: flex;
     align-items: center;
@@ -255,37 +253,37 @@ const postsWithContent = await Promise.all(
     font-weight: 500;
     transition: all 0.2s ease;
   }
-  
+
   .pagination a {
     background: var(--bg-secondary);
     color: var(--text-secondary);
     border: 1px solid var(--border);
   }
-  
+
   .pagination a:hover {
     background: var(--bg-tertiary);
     color: var(--text-primary);
     border-color: var(--accent-dim);
     text-decoration: none;
   }
-  
+
   .pagination .current {
     background: var(--accent-dim);
     color: var(--text-primary);
     border: 1px solid var(--accent);
   }
-  
+
   .pagination .dots {
     color: var(--text-muted);
     cursor: default;
   }
-  
+
   .site-footer {
     border-top: 1px solid var(--border);
     padding: 2rem 0;
     margin-top: auto;
   }
-  
+
   .site-footer p {
     color: var(--text-muted);
     font-size: 0.8rem;
@@ -293,7 +291,7 @@ const postsWithContent = await Promise.all(
     margin: 0;
     font-weight: 300;
   }
-  
+
   @media (max-width: 600px) {
     .post-header-row {
       flex-direction: column;
@@ -301,7 +299,7 @@ const postsWithContent = await Promise.all(
       gap: 0.15rem;
       margin-bottom: 0.5rem;
     }
-    
+
     .post-date {
       text-align: left;
       order: 1;
@@ -311,7 +309,7 @@ const postsWithContent = await Promise.all(
       margin-top: 0.25rem;
     }
   }
-  
+
   @media (max-width: 480px) {
     .container {
       padding: 0 1rem;
@@ -329,15 +327,15 @@ const postsWithContent = await Promise.all(
       font-size: 1.0rem;
       line-height: 1.5;
     }
-    
+
     .post-divider {
       margin: 1.5rem 0 0;
     }
-    
+
     .pagination {
       gap: 0.25rem;
     }
-    
+
     .pagination a, .pagination span {
       width: 36px;
       height: 36px;

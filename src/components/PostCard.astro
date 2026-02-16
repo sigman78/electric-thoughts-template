@@ -31,49 +31,49 @@ const formattedDate = format(date);
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--border);
   }
-  
+
   .post-card:last-child {
     border-bottom: none;
   }
-  
+
   .post-date {
     display: block;
     color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--code-font);
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .post-title {
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
     line-height: 1.4;
   }
-  
+
   .post-title a {
     color: var(--text-primary);
     text-decoration: none;
     transition: color 0.2s ease;
   }
-  
+
   .post-title a:hover {
     color: var(--accent);
   }
-  
+
   .post-content {
     color: var(--text-secondary);
     line-height: 1.5;
   }
-  
+
   .post-content :global(p) {
     margin-bottom: 0.75rem;
   }
-  
+
   .post-content :global(p:last-child) {
     margin-bottom: 0;
   }
-  
+
   .read-more {
     display: inline-flex;
     align-items: center;
@@ -82,25 +82,25 @@ const formattedDate = format(date);
     font-size: 0.9rem;
     text-decoration: none;
   }
-  
+
   .read-more:hover {
     text-decoration: none;
   }
-  
+
   .read-more-icon {
     font-size: 1.1rem;
     transition: transform 0.2s ease;
   }
-  
+
   .read-more:hover .read-more-icon {
     transform: translateX(4px);
   }
-  
+
   @media (max-width: 480px) {
     .post-card {
       padding: 1.25rem 0;
     }
-    
+
     .post-title {
       font-size: 1.2rem;
     }
