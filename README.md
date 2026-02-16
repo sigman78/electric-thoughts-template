@@ -1,6 +1,6 @@
 # Electric Thoughts
 
-A minimalistic tech blog built with Astro v5, optimized for Cloudflare hosting.
+A minimalistic tech blog built with Astro v5.
 
 ## Features
 
@@ -9,7 +9,7 @@ A minimalistic tech blog built with Astro v5, optimized for Cloudflare hosting.
 - **Markdown support** - Blog posts written in Markdown with YAML front matter
 - **Syntax highlighting** - Code blocks powered by Shiki
 - **Fully responsive** - Works beautifully on desktop and mobile
-- **Static generation** - Optimized for Cloudflare Pages/Workers
+- **Static generation** - Fast static site generation
 
 ## Adding Blog Posts
 
@@ -50,18 +50,13 @@ npm run preview
 
 ## Deployment
 
-### Cloudflare Pages
+Deploy the static site to any hosting service that supports static files:
 
-1. Push code to GitHub/GitLab
-2. Connect repository in Cloudflare Pages dashboard
-3. Build settings:
-   - **Build command:** `npm run build`
-   - **Build output:** `dist`
-4. Deploy!
+1. Build the site: `npm run build`
+2. Upload the `dist` folder to your hosting provider
+3. Configure your hosting to serve the files
 
-### Cloudflare Workers
-
-The project is configured with `@astrojs/cloudflare` adapter for serverless deployment.
+Popular options: GitHub Pages, Netlify, Vercel, or any static hosting service.
 
 ## Configuration
 
