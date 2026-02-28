@@ -271,12 +271,11 @@ const { title, description = 'Electric Thoughts - A tech blog' } = Astro.props;
 <body>
   <slot />
   <script>
-    import CyberpunkBoids from '../utils/boids2';
+    import CyberpunkBoids from '../utils/boids6';
 
     function initBoids() {
       const boids = new CyberpunkBoids({
-        boidCount: 50,
-        sleepTimeout: 150000
+        boidCount: 80
       });
       boids.start();
     }
